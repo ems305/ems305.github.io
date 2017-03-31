@@ -102,6 +102,6 @@ var deploySettings = {
 
 // Deploy to github
 gulp.task('deploy', function() {
-  return gulp.src('dist/**/*')
-    .pipe(ghPages(deploySettings));
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages(deploySettings.ghPages));
 });
