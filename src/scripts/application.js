@@ -45,20 +45,31 @@
         distance: '0px'
     }, 300);
 
-    // Initialize and Configure Magnific Popup Lightbox Plugin
-    $('.popup-gallery').magnificPopup({
-        delegate: 'a',
-        type: 'image',
-        tLoading: 'Loading image #%curr%...',
-        mainClass: 'mfp-img-mobile',
-        gallery: {
-            enabled: true,
-            navigateByImgClick: true,
-            preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
-        },
-        image: {
-            tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
-        }
+    // Form submit
+    $("#contact-form").validate({
+      submitHandler: function(form) {
+        $.ajax({
+            url: "https://formspree.io/hello@eriksmith.co",
+            method: "POST",
+            data: {
+              name: $(form).find("input[name='name']").val(),
+              email: $(form).find("input[name='_replyto']").val(),
+              _company: $(form).find("input[name='_company']").val(),
+              _phone: $(form).find("input[name='_phone']").val(),
+              _subject: $(form).find("input[name='_subject']").val(),
+              _message: $(form).find("textarea[name='_message']").val()
+            },
+            dataType: "json",
+            success: function() {
+              $("#contact-form-success").fadeIn();
+              $("#contact-form").fadeOut();
+            },
+            error: function() {
+              $("#contact-form-error").fadeIn();
+            }
+        });
+        return false;
+      }
     });
 
 })(jQuery); // End of use strict

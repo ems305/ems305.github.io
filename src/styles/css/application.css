@@ -60,6 +60,9 @@ section {
 .no-padding {
   padding: 0;
 }
+.fa-icon-white {
+  color: white;
+}
 .navbar-default {
   background-color: white;
   border-color: rgba(34, 34, 34, 0.05);
