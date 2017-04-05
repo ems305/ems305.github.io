@@ -61,11 +61,12 @@
             },
             dataType: "json",
             success: function() {
-              $("#contact-form-success").fadeIn();
-              $("#contact-form").fadeOut();
+              $("#contact-form").slideUp(200, function() {
+                  $("#contact-form-success").slideDown();
+              });
             },
             error: function() {
-              $("#contact-form-error").fadeIn();
+              $("#contact-form-error").slideDown();
             }
         });
         return false;
